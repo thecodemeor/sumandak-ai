@@ -1,0 +1,23 @@
+.wrap {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+.chat {
+  height: 400px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.user {
+  text-align: right;
+  color: blue;
+}
+
+.bot {
+  text-align: left;
+  color: black;
+}

@@ -1,0 +1,14 @@
+<div class="wrap">
+    <h1>Sumandak</h1>
+
+    <div class="chat">
+        <div *ngFor="let m of messages" [class.user]="m.role==='user'" [class.bot]="m.role==='bot'">
+            {{ m.text }}
+        </div>
+    </div>
+
+    <form (ngSubmit)="send()">
+        <input [(ngModel)]="input" name="input" placeholder="Type a message" />
+        <button type="submit">Send</button>
+    </form>
+</div>
