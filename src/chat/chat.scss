@@ -16,18 +16,22 @@
     width: 100%; height: 100%;
     padding-right: 1rem;
     overflow-y: auto;
+
+    .chat-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.625rem;
+    }
 }
 
 .chat {
     max-width: 80%; min-height: 2.7rem !important;
     padding: 0.3rem 1rem;
-    &.user {
-      margin-left: auto;
-    }
+    line-height: 1.2;
+    &.user { margin-left: auto;}
+    &.bot { margin-right: auto;}
 
-    &.bot {
-      margin-right: auto;
-    }
+    p { line-height: 1.3;}
 }
 
 .footer {

@@ -3,11 +3,13 @@
 
     <moz-card class="container w-full h-full" model="outline" color="primary">
         <moz-card-body class="w-full h-full flex flex-col gap-2 chat-space">
-            @for (m of messages; track $index) {
-                <moz-card class="chat" [class.user]="m.role==='user'" [class.bot]="m.role==='bot'" model="flavor" [color]="m.role==='user' ? 'secondary' : 'primary'">
-                    <p>{{ m.text }}</p>
-                </moz-card>
-            }
+            <div class="chat-group">
+                @for (m of messages; track $index) {
+                    <moz-card class="chat" [class.user]="m.role==='user'" [class.bot]="m.role==='bot'" model="flavor" [color]="m.role==='user' ? 'secondary' : 'primary'">
+                        <p>{{ m.text }}</p>
+                    </moz-card>
+                }
+            </div>
         </moz-card-body>
     </moz-card>
 
