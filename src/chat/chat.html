@@ -9,17 +9,18 @@
                         <p>{{ m.text }}</p>
                     </moz-card>
                 }
+                <div #bottom></div>
             </div>
         </moz-card-body>
     </moz-card>
 
     <form (ngSubmit)="send()" class="flex gap-2">
         <div class="spacer">
-            <moz-input [(ngModel)]="input" name="input" placeholder="Anything about Sabah" full></moz-input>
+            <sumandak-input [(ngModel)]="input" name="input" placeholder="Anything about Sabah" full></sumandak-input>
         </div>
         <moz-button type="submit">Send</moz-button>
     </form>
     <div class="footer">
-        <p>This is a group project developed for the subject CSC649 – Special Topics in Computer Science at Universiti Teknologi MARA (UiTM), Shah Alam.</p>
+        <p>This is a group project developed for the subject CSC649 - Special Topics in Computer Science at Universiti Teknologi MARA (UiTM), Shah Alam.</p>
     </div>
 </div>

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChatService } from './chat.service';
-import { MozCard, MozCardBody, MozInput, MozButton } from 'mozek-angular';
+import { MozCard, MozCardBody, MozButton } from 'mozek-angular';
+import { SumInput } from '../components/input/input';
 
 @Component({
   selector: 'app-chat',
@@ -10,13 +11,16 @@ import { MozCard, MozCardBody, MozInput, MozButton } from 'mozek-angular';
   imports: [CommonModule, FormsModule,
     MozCard,
     MozCardBody,
-    MozInput,
-    MozButton
+    MozButton,
+    SumInput
 ],
   templateUrl: './chat.html',
   styleUrl: './chat.scss'
 })
 export class ChatComponent {
+    @ViewChild('bottom') bottom!: ElementRef<HTMLDivElement>;
+
+    private shouldScroll = false;
     input = '';
     sending = false;
 
@@ -39,6 +43,8 @@ export class ChatComponent {
         const botMsg = { role: 'bot' as const, text: 'Thinking…' };
         this.messages.push(botMsg);
 
+        this.shouldScroll = true;
+
         try {
             const res = await this.chat.send(msg);
             botMsg.text = res?.reply ?? 'No response.';
@@ -54,6 +60,13 @@ export class ChatComponent {
             botMsg.text = `Error: ${details}`;
         } finally {
             this.sending = false;
+            this.shouldScroll = true;
+        }
+    }
+    ngAfterViewChecked(): void {
+        if (this.shouldScroll) {
+            this.bottom?.nativeElement.scrollIntoView({ behavior: 'smooth' });
+            this.shouldScroll = false;
         }
     }
 }
